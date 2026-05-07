@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 4 of 12 &mdash; tool catalog (14 typed handlers across Calendar / Slack / GitHub / Email / Memory / shared / Orchestrator).
+Step 5 of 12 &mdash; orchestrator engine (LangGraph-inspired state machine, delegation, approval gates, capability enforcement, resumable across stateless serverless).
 
 ## Stack
 

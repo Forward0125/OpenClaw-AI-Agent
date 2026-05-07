@@ -31,6 +31,17 @@ export type AgentName =
   | "Memory"
   | "Approval";
 
+/** Distributive Omit so each union variant keeps its own keys after
+ *  removing `id` + `ts`. Plain `Omit<WorkflowEvent, ...>` collapses
+ *  the union to its common-key intersection — wrong here because
+ *  every variant has different keys. */
+export type WorkflowEventInput =
+  WorkflowEvent extends infer U
+    ? U extends WorkflowEvent
+      ? Omit<U, "id" | "ts">
+      : never
+    : never;
+
 /** Discriminated event emitted into the run's `events` array. */
 export type WorkflowEvent =
   | { id: string; ts: string; type: "agent.start";       agent: AgentName; reason?: string }
@@ -126,7 +137,7 @@ export function startWorkflow(query: string): WorkflowRun {
   return run;
 }
 
-export function appendEvent(runId: string, partial: Omit<WorkflowEvent, "id" | "ts">): WorkflowEvent {
+export function appendEvent(runId: string, partial: WorkflowEventInput): WorkflowEvent {
   const event = { ...partial, id: newId("ev"), ts: new Date().toISOString() } as WorkflowEvent;
 
   const runs = loadWorkflows().map((r) => {
