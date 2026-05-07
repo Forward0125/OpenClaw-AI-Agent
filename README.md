@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 10 of 12 &mdash; Activity Log timeline at `/logs` + Context & Insights right rail (Active Context / Pending Approvals / Performance Metrics / Tool Usage by Agent).
+Step 11 of 12 &mdash; Analytics Dashboard at `/` (KPI strip, 7-day trends chart, tool-usage donut, recent activity table, alerts panel).
 
 > **Vercel env var required:** `OPENAI_API_KEY` (server-only, not `NEXT_PUBLIC_*`).
 
