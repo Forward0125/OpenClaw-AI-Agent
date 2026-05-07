@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 9 of 12 &mdash; Inline approval cards + `/approvals` queue. Workflows pause on destructive tools and resume on Approve / Decline.
+Step 10 of 12 &mdash; Activity Log timeline at `/logs` + Context & Insights right rail (Active Context / Pending Approvals / Performance Metrics / Tool Usage by Agent).
 
 > **Vercel env var required:** `OPENAI_API_KEY` (server-only, not `NEXT_PUBLIC_*`).
 
