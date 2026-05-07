@@ -205,3 +205,30 @@ export function cancelWorkflow(runId: string): void {
 export function clearWorkflowHistory(): void {
   commit([]);
 }
+
+// ─── Paused EngineState persistence (per run) ─────────────────────
+// When the orchestrator pauses for approval, the server returns the
+// EngineState. We stash it locally so a page reload can still call
+// /api/run/resume to continue from exactly where it left off.
+
+const PAUSED_PREFIX = "openclaw:paused-state:";
+
+export function setPausedState(runId: string, state: unknown): void {
+  if (typeof localStorage === "undefined") return;
+  try { localStorage.setItem(PAUSED_PREFIX + runId, JSON.stringify(state)); } catch { /* quota */ }
+}
+
+export function loadPausedState(runId: string): unknown | null {
+  if (typeof localStorage === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(PAUSED_PREFIX + runId);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function clearPausedState(runId: string): void {
+  if (typeof localStorage === "undefined") return;
+  localStorage.removeItem(PAUSED_PREFIX + runId);
+}

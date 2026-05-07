@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 7 of 12 &mdash; SSE API routes (`POST /api/run` + `POST /api/run/resume`) wired to a real OpenAI ModelClient. End-to-end multi-agent workflows verified live.
+Step 8 of 12 &mdash; Workflow Execution view (xyflow DAG + real-time Execution Log) and the `/workflows` index with a new-workflow form. Streams `/api/run` live and renders state as events land.
 
 > **Vercel env var required:** `OPENAI_API_KEY` (server-only, not `NEXT_PUBLIC_*`).
 
