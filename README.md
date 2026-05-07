@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 1 of 12 &mdash; sidebar/topbar shell.
+Step 2 of 12 &mdash; mock fixtures (calendar / Slack / GitHub / email / SMS) + cross-source keyword search.
 
 ## Stack
 
