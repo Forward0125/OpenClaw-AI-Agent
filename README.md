@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 3 of 12 &mdash; memory layer (workflow-history store + unified recall over fixtures + past runs).
+Step 4 of 12 &mdash; tool catalog (14 typed handlers across Calendar / Slack / GitHub / Email / Memory / shared / Orchestrator).
 
 ## Stack
 
