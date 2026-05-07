@@ -7,7 +7,8 @@
 
 import { use, useMemo } from "react";
 import Link from "next/link";
-import { ArrowLeft, AlertCircle, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, AlertCircle, CheckCircle2 } from "lucide-react";
+import { ApprovalCard } from "@/components/workflow/ApprovalCard";
 import { Card } from "@/components/Card";
 import { ExecutionLog } from "@/components/workflow/ExecutionLog";
 import { WorkflowDAG } from "@/components/workflow/WorkflowDAG";
@@ -99,21 +100,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         </Card>
       )}
 
-      {run.status === "awaiting_approval" && (
-        <Card
-          title={
-            <span className="inline-flex items-center gap-2">
-              <ShieldCheck className="size-3.5 text-warn" />
-              Approval Required
-            </span>
-          }
-        >
-          <div className="p-4 text-sm text-muted">
-            The orchestrator is waiting for your approval to run a destructive
-            tool. Inline approve / decline UI lands in step 9.
-          </div>
-        </Card>
-      )}
+      {run.status === "awaiting_approval" && <ApprovalCard run={run} />}
 
       <Card title="Real-time Execution Log">
         <ExecutionLog events={run.events} />

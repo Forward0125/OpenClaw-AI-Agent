@@ -6,7 +6,7 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 8 of 12 &mdash; Workflow Execution view (xyflow DAG + real-time Execution Log) and the `/workflows` index with a new-workflow form. Streams `/api/run` live and renders state as events land.
+Step 9 of 12 &mdash; Inline approval cards + `/approvals` queue. Workflows pause on destructive tools and resume on Approve / Decline.
 
 > **Vercel env var required:** `OPENAI_API_KEY` (server-only, not `NEXT_PUBLIC_*`).
 
