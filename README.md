@@ -6,7 +6,9 @@ AI executive assistant orchestrating 7 sub-agents across mock Slack/Calendar/Git
 
 ## Status
 
-Step 5 of 12 &mdash; orchestrator engine (LangGraph-inspired state machine, delegation, approval gates, capability enforcement, resumable across stateless serverless).
+Step 7 of 12 &mdash; SSE API routes (`POST /api/run` + `POST /api/run/resume`) wired to a real OpenAI ModelClient. End-to-end multi-agent workflows verified live.
+
+> **Vercel env var required:** `OPENAI_API_KEY` (server-only, not `NEXT_PUBLIC_*`).
 
 ## Stack
 

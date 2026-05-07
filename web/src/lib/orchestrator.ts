@@ -122,11 +122,27 @@ export function initState(runId: string, query: string): EngineState {
     currentAgent: "Orchestrator",
     messages: [
       { role: "system", content: AGENTS.Orchestrator.systemPrompt },
+      { role: "system", content: dateGroundingPrompt() },
       { role: "user",   content: query },
     ],
     status: "running",
     iters:  0,
   };
+}
+
+/** Pin "now" so the model doesn't invent 2023 dates. Refreshed at
+ *  workflow start; the rest of the conversation references this. */
+function dateGroundingPrompt(): string {
+  const now = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const dow   = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][now.getUTCDay()];
+  return [
+    `Current UTC date: ${today} (${dow}).`,
+    `When tools accept ISO date params, use dates relative to TODAY.`,
+    `"next week" = the 7 days starting from the next Monday.`,
+    `"tomorrow" = ${new Date(now.getTime() + 86400_000).toISOString().slice(0, 10)}.`,
+    `Only call calendar.findSlots ONCE per request — pass the full date range, not one day at a time.`,
+  ].join("\n");
 }
 
 /** Drive the engine until it either terminates or pauses for approval. */
